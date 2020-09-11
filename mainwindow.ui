@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>614</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Qt Model-View-Delegate (by:龚建波)</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget{
+background:rgb(20,20,20);
+}
+/* tab widget */
+QTabWidget{
+}
+QTabWidget::pane{
+border: 1px solid white;
+margin-top:2px;
+padding:1px;
+}
+QTabBar{
+font:14px &quot;宋体&quot;;
+}
+QTabBar::tab{
+min-height:26px;
+background:transparent;
+color:white;
+border:1px solid white;
+border-left:0;
+padding:0 10px 0 10px;
+border-top-left-radius:10px;
+}
+QTabBar::tab:first{
+border:1px solid white;
+}
+QTabBar::tab:hover{
+border-color:rgb(255,125,0);
+}
+QTabBar::tab:selected{
+background:rgb(50,100,200);
+}
+QTabBar::close-button{
+}
+QTabBar::close-button:hover{
+}
+/*左侧滚动按钮*/
+QTabBar::tear {
+}
+/*左右滚动按钮区域*/
+QTabBar::scroller{
+}
+QTabBar QToolButton{
+}
+QTabBar QToolButton::left-arrow{
+}
+QTabBar QToolButton::left-arrow:hover{
+}
+QTabBar QToolButton::right-arrow{
+}
+QTabBar QToolButton::right-arrow:hover{
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="DemoQStandardItem" name="tabQStandardItem">
+       <attribute name="title">
+        <string>QStandardItem</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DemoQStandardItem</class>
+   <extends>QWidget</extends>
+   <header>DemoQStandardItem.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
