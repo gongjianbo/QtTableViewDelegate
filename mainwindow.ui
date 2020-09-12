@@ -72,16 +72,16 @@ QTabBar QToolButton::right-arrow:hover{
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
-      <widget class="DemoQStandardItem" name="tabQStandardItem">
+      <widget class="DemoStandardModel" name="tabStandardModel">
        <attribute name="title">
-        <string>QStandardItem</string>
+        <string>StandardModel</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tabTableModel">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>TableModel</string>
        </attribute>
       </widget>
      </widget>
@@ -91,9 +91,9 @@ QTabBar QToolButton::right-arrow:hover{
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DemoQStandardItem</class>
+   <class>DemoStandardModel</class>
    <extends>QWidget</extends>
-   <header>DemoQStandardItem.h</header>
+   <header>DemoStandardModel.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

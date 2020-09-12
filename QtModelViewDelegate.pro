@@ -15,8 +15,8 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-INCLUDEPATH += $$PWD/DemoQStandardItem
-include($$PWD/DemoQStandardItem/DemoQStandardItem.pri)
+INCLUDEPATH += $$PWD/DemoStandardModel
+include($$PWD/DemoStandardModel/DemoStandardModel.pri)
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

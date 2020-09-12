@@ -1,5 +1,5 @@
-#ifndef DEMOQSTANDARDITEM_H
-#define DEMOQSTANDARDITEM_H
+#ifndef DEMOSTANDARDMODEL_H
+#define DEMOSTANDARDMODEL_H
 
 #include <QWidget>
 #include <QTimer>
@@ -7,18 +7,18 @@
 #include <QStandardItem>
 
 namespace Ui {
-class DemoQStandardItem;
+class DemoStandardModel;
 }
 
 /**
  * @brief 展示QTableView+QStandardItemModel的基本使用
  */
-class DemoQStandardItem : public QWidget
+class DemoStandardModel : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DemoQStandardItem(QWidget *parent = nullptr);
-    ~DemoQStandardItem();
+    explicit DemoStandardModel(QWidget *parent = nullptr);
+    ~DemoStandardModel();
 
 private:
     void initModel();
@@ -30,7 +30,7 @@ public slots:
     void updateData();
 
 private:
-    Ui::DemoQStandardItem *ui;
+    Ui::DemoStandardModel *ui;
     //定时刷新
     QTimer *timer=nullptr;
     //固定列数
@@ -40,4 +40,4 @@ private:
     QStandardItemModel *model=nullptr;
 };
 
-#endif // DEMOQSTANDARDITEM_H
+#endif // DemoStandardModel_H

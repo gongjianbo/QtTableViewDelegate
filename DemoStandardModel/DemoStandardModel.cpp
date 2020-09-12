@@ -1,5 +1,5 @@
-#include "DemoQStandardItem.h"
-#include "ui_DemoQStandardItem.h"
+#include "DemoStandardModel.h"
+#include "ui_DemoStandardModel.h"
 
 #include <QRandomGenerator>
 
@@ -14,9 +14,9 @@
 //    }
 //};
 
-DemoQStandardItem::DemoQStandardItem(QWidget *parent) :
+DemoStandardModel::DemoStandardModel(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::DemoQStandardItem)
+    ui(new Ui::DemoStandardModel)
 {
     ui->setupUi(this);
 
@@ -28,12 +28,12 @@ DemoQStandardItem::DemoQStandardItem(QWidget *parent) :
     updateData();
 }
 
-DemoQStandardItem::~DemoQStandardItem()
+DemoStandardModel::~DemoStandardModel()
 {
     delete ui;
 }
 
-void DemoQStandardItem::initModel()
+void DemoStandardModel::initModel()
 {
     //QStandardItemModel类提供用于存储自定义数据的通用模型
     //如果用这个类的话感觉可以考虑把QTableView换成QTableWidget
@@ -56,7 +56,7 @@ void DemoQStandardItem::initModel()
     //ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
-void DemoQStandardItem::initView()
+void DemoStandardModel::initView()
 {
     //QTableView常用设置
     QTableView *table=ui->tableView;
@@ -96,11 +96,11 @@ void DemoQStandardItem::initView()
     //table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-void DemoQStandardItem::initOperate()
+void DemoStandardModel::initOperate()
 {
     timer=new QTimer(this);
     timer->setInterval(3000); //刷新间隔ms
-    connect(timer,&QTimer::timeout,this,&DemoQStandardItem::updateData);
+    connect(timer,&QTimer::timeout,this,&DemoStandardModel::updateData);
 
     //点击定时刷新
     connect(ui->checkUpdate,&QCheckBox::stateChanged,this,[=]{
@@ -113,7 +113,7 @@ void DemoQStandardItem::initOperate()
     });
 }
 
-void DemoQStandardItem::updateData()
+void DemoStandardModel::updateData()
 {
     //每个单元格设置一个随机数[0-300)
     //0-100红色，100-200绿色，200-300蓝

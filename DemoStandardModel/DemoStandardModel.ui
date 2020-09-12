@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DemoQStandardItem</class>
- <widget class="QWidget" name="DemoQStandardItem">
+ <class>DemoStandardModel</class>
+ <widget class="QWidget" name="DemoStandardModel">
   <property name="geometry">
    <rect>
     <x>0</x>
