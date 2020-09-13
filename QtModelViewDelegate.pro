@@ -18,6 +18,9 @@ FORMS += \
 INCLUDEPATH += $$PWD/DemoStandardModel
 include($$PWD/DemoStandardModel/DemoStandardModel.pri)
 
+INCLUDEPATH += $$PWD/DemoTableModel
+include($$PWD/DemoTableModel/DemoTableModel.pri)
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

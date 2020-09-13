@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DemoTableModel</class>
+ <widget class="QWidget" name="DemoTableModel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>531</width>
+    <height>355</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QCheckBox{
+color:white;
+font:14px &quot;宋体&quot;;
+}
+QTableView{
+font:14px &quot;宋体&quot;;
+border:1px solid rgb(120,120,120);
+gridline-color: rgb(120,120,120);
+color:white;
+background:rgb(30,30,30);
+alternate-background-color:rgb(50,50,50);
+selection-color:white;
+selection-background-color:rgb(50,100,200);
+}
+QTableView::indicator{
+width: 16px;
+height: 16px;
+margin-left:20px;
+}
+QTableView::indicator:hover,
+QTableView::indicator:checked:hover{
+}
+QTableView::indicator:checked{
+}
+QHeaderView{
+border:0;
+background:rgb(70,70,70);
+}
+QHeaderView::section{
+font:14px &quot;宋体&quot;;
+height:25px;
+width:50px;
+border:1px solid rgb(50,100,200);
+border-left:0;
+border-top:0;
+color:white;
+background:rgb(70,70,70);
+}
+QHeaderView::section:hover{
+background:rgb(150,150,150);
+}
+QHeaderView::section:pressed,
+QHeaderView::section:checked{
+background:rgb(50,100,200);
+}
+QTableView QTableCornerButton::section {
+background:rgb(70,70,70);
+border:1px solid rgb(50,100,200);
+border-left:0;
+border-top:0;
+}
+/*表头排序的小图标*/
+QHeaderView::down-arrow{}
+QHeaderView::up-arrow{}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTableView" name="tableView"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
