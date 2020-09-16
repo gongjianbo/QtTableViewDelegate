@@ -17,7 +17,23 @@
    <string notr="true">#centralwidget{
 background:rgb(20,20,20);
 }
-/* tab widget */
+/*按钮*/
+QPushButton{
+font:14px &quot;宋体&quot;;
+width:75px;
+height:26px;
+border:1px solid rgb(120,120,120);
+color:white;
+background:rgb(70,70,70);
+}
+QPushButton:hover{
+border-color:rgb(50,100,200);
+}
+QPushButton:pressed,
+QPushButton:checked{
+background:rgb(50,100,200);
+}
+/*tabwidget*/
 QTabWidget{
 }
 QTabWidget::pane{

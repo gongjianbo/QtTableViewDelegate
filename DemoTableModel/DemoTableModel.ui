@@ -59,19 +59,70 @@ QHeaderView::section:pressed,
 QHeaderView::section:checked{
 background:rgb(50,100,200);
 }
-QTableView QTableCornerButton::section {
+QTableView QTableCornerButton::section{
 background:rgb(70,70,70);
 border:1px solid rgb(50,100,200);
 border-left:0;
 border-top:0;
 }
-/*表头排序的小图标*/
+QTableView QTableCornerButton::section:hover{
+background:rgb(150,150,150);
+}
+QTableView QTableCornerButton::section:pressed{
+background:rgb(50,100,200);
+}*/
+/*表头排序的小图标
 QHeaderView::down-arrow{}
 QHeaderView::up-arrow{}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTableView" name="tableView"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnSetData">
+       <property name="text">
+        <string>设置数据</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnGetData">
+       <property name="text">
+        <string>导出数据</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnAddRow">
+       <property name="text">
+        <string>添加行</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnDelRow">
+       <property name="text">
+        <string>删除行</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
