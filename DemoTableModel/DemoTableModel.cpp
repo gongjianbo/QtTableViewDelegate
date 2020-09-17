@@ -33,8 +33,6 @@ void DemoTableModel::initTable()
         table->setCurrentIndex(selectedIndex);
     },Qt::DirectConnection);
 
-    //设置第三列列宽
-    table->setColumnWidth(2,200);
     //开启隔行变色，设置之后qss的对应设置才有效
     table->setAlternatingRowColors(true);
     //单行选中=按行选中+单次选择
@@ -42,8 +40,31 @@ void DemoTableModel::initTable()
     table->setSelectionMode(QAbstractItemView::SingleSelection);
     //默认行高
     table->verticalHeader()->setDefaultSectionSize(25);
-    //行表头文字居中，默认列居中行左对齐
-    table->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
+    //行表头文字居中，默认列居中行左对齐，也可以在headerData接口里设置
+    //table->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
+
+    //修改表头，自定义接口
+    model->setHorHeaderData(QList<QString>{"Name","Age","Info"});
+
+    //表头实例
+    QHeaderView *header=table->horizontalHeader();
+    //拖拽交换行
+    header->setSectionsMovable(true);
+    //如何决策宽高
+    header->setSectionResizeMode(QHeaderView::Fixed);
+    //是否可以点击
+    header->setSectionsClickable(false);
+    //选中时高亮
+    header->setHighlightSections(false);
+    //默认宽高，放到table设置宽高的接口前，不然被覆盖
+    header->setDefaultSectionSize(100);
+    //最后一列填充
+    header->setStretchLastSection(true);
+
+    //排序
+    table->setSortingEnabled(true);
+    //设置第三列列宽
+    //table->setColumnWidth(2,200);
 }
 
 void DemoTableModel::initOperate()

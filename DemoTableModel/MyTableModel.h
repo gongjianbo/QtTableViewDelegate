@@ -30,11 +30,13 @@ public:
     QList<MyModelItem> getModelData() const;
     //自定义插入行数据
     bool insertModelData(int row,const MyModelItem &datas);
+    //自定义设置表头数据
+    void setHorHeaderData(const QList<QString> &headers);
 
     //获取表头数据
-    //QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     //设置表头数据
-    //bool setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role = Qt::EditRole) override;
+    bool setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role = Qt::EditRole) override;
 
     //获取行数
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -58,6 +60,8 @@ public:
 private:
     //数据
     QList<MyModelItem> modelData;
+    //横项列表头
+    QList<QString> horHeaderData;
 };
 
 

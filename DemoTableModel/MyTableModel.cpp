@@ -38,21 +38,46 @@ bool MyTableModel::insertModelData(int row, const MyModelItem &datas)
     return true;
 }
 
-/*QVariant MyTableModel::headerData(int section, Qt::Orientation orientation, int role) const
+void MyTableModel::setHorHeaderData(const QList<QString> &headers)
 {
-    // FIXME: Implement me!
+    //自定义的表头设置接口
+    horHeaderData=headers;
+    emit headerDataChanged(Qt::Horizontal, 0, headers.count()-1);
+}
+
+QVariant MyTableModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    //注意，如果用了sortproxymodel，这个section是实际数据的index，不是界面看到的index
+    //区分横表头和竖表头
+    if(orientation == Qt::Horizontal){
+        //这里我们只设置居中对齐和文本
+        if (role == Qt::DisplayRole){
+            //这里把横项列表头的文本设计为可以设置的
+            if(section>=0 && section<horHeaderData.count())
+                return horHeaderData.at(section);
+            return QString("Col %1").arg(section + 1);
+        }else if(role == Qt::TextAlignmentRole){
+            return Qt::AlignCenter;
+        }
+    }else{
+        if (role == Qt::DisplayRole)
+            return QString("Row %1").arg(section + 1);
+        else if(role == Qt::TextAlignmentRole)
+            return Qt::AlignCenter;
+    }
+    return QVariant();
 }
 
 bool MyTableModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
 {
-    if (value != headerData(section, orientation, role)) {
-        // FIXME: Implement me!
+    //设计为横项列表头可以设置
+    if (orientation == Qt::Horizontal && section>=0 && section<horHeaderData.count()) {
+        horHeaderData[section] = value.toString();
         emit headerDataChanged(orientation, section, section);
         return true;
     }
     return false;
-}*/
-
+}
 
 int MyTableModel::rowCount(const QModelIndex &parent) const
 {
