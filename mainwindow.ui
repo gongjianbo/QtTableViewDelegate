@@ -17,6 +17,10 @@
    <string notr="true">#centralwidget{
 background:rgb(20,20,20);
 }
+QCheckBox{
+color:white;
+font:14px &quot;宋体&quot;;
+}
 /*按钮*/
 QPushButton{
 font:14px &quot;宋体&quot;;

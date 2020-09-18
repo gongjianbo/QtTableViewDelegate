@@ -31,6 +31,8 @@ public slots:
     void addRow();
     //删除行
     void delRow();
+    //排序开关
+    void sortEnableChange();
 
 private:
     Ui::DemoTableModel *ui;

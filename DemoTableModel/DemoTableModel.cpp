@@ -2,6 +2,7 @@
 #include "ui_DemoTableModel.h"
 
 #include <QRandomGenerator>
+#include <QSortFilterProxyModel>
 
 DemoTableModel::DemoTableModel(QWidget *parent) :
     QWidget(parent),
@@ -22,7 +23,18 @@ void DemoTableModel::initTable()
 {
     QTableView *table=ui->tableView;
     model=new MyTableModel(ui->tableView);
+    //想要利用view支持的点击表头排序功能
+    //我们可以用QSortFilterProxyModel完成排序，或者实现model的sort接口来完成排序
+    //其次，view要设置setSortingEnabled为true，且表头是可点击的
+#if 0
+    //借助QSortFilterProxyModel
+    QSortFilterProxyModel *proxy=new QSortFilterProxyModel(ui->tableView);
+    proxy->setSourceModel(model);
+    table->setModel(proxy);
+#else
+    //借助model的sort接口，基类实现不执行任何操作，要自己实现
     table->setModel(model);
+#endif
 
     //保存和恢复model选中项，因为在resetModel后会失效
     connect(model,&MyTableModel::modelAboutToBeReset,this,[=]{
@@ -51,18 +63,18 @@ void DemoTableModel::initTable()
     //拖拽交换行
     header->setSectionsMovable(true);
     //如何决策宽高
-    header->setSectionResizeMode(QHeaderView::Fixed);
+    //header->setSectionResizeMode(QHeaderView::Fixed);
     //是否可以点击
-    header->setSectionsClickable(false);
+    header->setSectionsClickable(true);
     //选中时高亮
-    header->setHighlightSections(false);
+    //header->setHighlightSections(false);
     //默认宽高，放到table设置宽高的接口前，不然被覆盖
     header->setDefaultSectionSize(100);
     //最后一列填充
     header->setStretchLastSection(true);
 
     //排序
-    table->setSortingEnabled(true);
+    //table->setSortingEnabled(true);
     //设置第三列列宽
     //table->setColumnWidth(2,200);
 }
@@ -77,6 +89,8 @@ void DemoTableModel::initOperate()
     connect(ui->btnAddRow,&QPushButton::clicked,this,&DemoTableModel::addRow);
     //删除行
     connect(ui->btnDelRow,&QPushButton::clicked,this,&DemoTableModel::delRow);
+    //排序开关
+    connect(ui->sortBox,&QCheckBox::stateChanged,this,&DemoTableModel::sortEnableChange);
 
     //初始化数据
     setData();
@@ -126,5 +140,22 @@ void DemoTableModel::delRow()
     //删除选中行
     //model->removeRows(ui->tableView->currentIndex().row(),1);
     model->removeRow(ui->tableView->currentIndex().row());
+}
+
+void DemoTableModel::sortEnableChange()
+{
+    if(ui->sortBox->isChecked()){
+        //开启排序
+        ui->tableView->setSortingEnabled(true);
+        //第2列升序
+        ui->tableView->sortByColumn(1,Qt::AscendingOrder);
+    }else{
+        //关闭排序功能
+        ui->tableView->setSortingEnabled(false);
+        //这里还有个问题是，如果需要恢复默认顺序如何做
+        //对于sortproxy这个比较简单，因为他改变的是显示的位置，
+        //但是model的sort直接改的容器中数据的位置
+        //我们可以给每行的数据标记一个原始的index，恢复时根据index值排序
+    }
 }
 

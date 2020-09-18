@@ -1,5 +1,7 @@
 #include "MyTableModel.h"
 
+#include <QDateTime>
+
 MyTableModel::MyTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
@@ -70,6 +72,8 @@ QVariant MyTableModel::headerData(int section, Qt::Orientation orientation, int 
 
 bool MyTableModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
 {
+    //role懒得判断了
+    role;
     //设计为横项列表头可以设置
     if (orientation == Qt::Horizontal && section>=0 && section<horHeaderData.count()) {
         horHeaderData[section] = value.toString();
@@ -92,7 +96,7 @@ int MyTableModel::columnCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
     //返回表格列数
-    return 3;
+    return MyModelItem::columnCount();
 }
 
 QVariant MyTableModel::data(const QModelIndex &index, int role) const
@@ -168,4 +172,67 @@ bool MyTableModel::removeRows(int row, int count, const QModelIndex &parent)
     }
     endRemoveRows();
     return true;
+}
+
+void MyTableModel::sort(int column, Qt::SortOrder order)
+{
+    if(modelData.isEmpty()||column<0||column>=columnCount())
+        return;
+    //判断升序降序
+    const bool is_asc = (order == Qt::AscendingOrder);
+    //排序
+    std::sort(modelData.begin(), modelData.end(),
+              [column, is_asc, this](const MyModelItem &left,const MyModelItem &right){
+        //我用QVariant只是在以前的基础上改的，自定义类型可以不用这个
+        //这里假设单元格数据都是任意类型的
+        const QVariant left_val = left.at(column);
+        const QVariant right_val = right.at(column);
+
+        //辅助接口，a<b返回true
+        return is_asc
+                ?lessThan(left_val,right_val)
+               :lessThan(right_val,left_val);
+    });
+    //更新view
+    dataChanged(index(0,0),index(modelData.count()-1,columnCount()-1));
+}
+
+bool MyTableModel::lessThan(const QVariant &left, const QVariant &right) const
+{
+    //参照QAbstractItemModelPrivate::isVariantLessThan的实现
+    //这些都是通用型的排序规则，一般我们会有自定义的需求，比如根据字符串中的数字排序
+    //有些类型需要包含头文件才能使用，如datetime
+    if (left.userType() == QMetaType::UnknownType)
+        return false;
+    if (right.userType() == QMetaType::UnknownType)
+        return true;
+    switch (left.userType()) {
+    case QMetaType::Int:
+        return left.toInt() < right.toInt();
+    case QMetaType::UInt:
+        return left.toUInt() < right.toUInt();
+    case QMetaType::LongLong:
+        return left.toLongLong() < right.toLongLong();
+    case QMetaType::ULongLong:
+        return left.toULongLong() < right.toULongLong();
+    case QMetaType::Float:
+        return left.toFloat() < right.toFloat();
+    case QMetaType::Double:
+        return left.toDouble() < right.toDouble();
+    case QMetaType::QChar:
+        return left.toChar() < right.toChar();
+    case QMetaType::QDate:
+        return left.toDate() < right.toDate();
+    case QMetaType::QTime:
+        return left.toTime() < right.toTime();
+    case QMetaType::QDateTime:
+        return left.toDateTime() < right.toDateTime();
+    case QMetaType::QString: break;
+    default: break;
+    }
+    //Locale表示支持本地字符串
+    //if (isLocaleAware)
+    return left.toString().localeAwareCompare(right.toString()) < 0;
+    //else
+    //   return left.toString().compare(right.toString(), cs) < 0;
 }

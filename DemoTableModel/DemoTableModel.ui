@@ -14,11 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QCheckBox{
-color:white;
-font:14px &quot;宋体&quot;;
-}
-QTableView{
+   <string notr="true">QTableView{
 font:14px &quot;宋体&quot;;
 border:1px solid rgb(120,120,120);
 gridline-color: rgb(120,120,120);
@@ -106,6 +102,13 @@ QHeaderView::up-arrow{}</string>
       <widget class="QPushButton" name="btnDelRow">
        <property name="text">
         <string>删除行</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="sortBox">
+       <property name="text">
+        <string>排序开关</string>
        </property>
       </widget>
      </item>
