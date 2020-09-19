@@ -29,6 +29,11 @@ public:
     void updateEditorGeometry(QWidget *editor,
                               const QStyleOptionViewItem &option,
                               const QModelIndex &index) const override;
+
+private:
+    //自定义的paint相关的辅助函数
+    void initMyStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const;
+    QString getDisplayText(const QModelIndex &index) const;
 };
 
 #endif // MYSTYLEDDELEGATE_H

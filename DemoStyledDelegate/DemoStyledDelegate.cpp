@@ -65,6 +65,8 @@ void DemoStyledDelegate::initModel()
                 //combobox list
             case 3:
                 new_item->setData(QStringList{"A","B","C"},Qt::DisplayRole);
+                //这里使用userrole来保存列表的下标
+                new_item->setData(row%3,Qt::UserRole);
                 break;
                 //linedit string
             case 4:
@@ -107,6 +109,8 @@ void DemoStyledDelegate::initView()
     table->horizontalHeader()->setDefaultSectionSize(120);
     //最后一列填充宽度(宽度不够时)
     table->horizontalHeader()->setStretchLastSection(true);
+    //可以拖动交换列
+    table->horizontalHeader()->setSectionsMovable(true);
     //默认行高
     table->verticalHeader()->setDefaultSectionSize(25);
     //行表头文字居中，默认列居中行左对齐
