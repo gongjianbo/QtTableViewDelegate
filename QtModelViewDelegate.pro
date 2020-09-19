@@ -21,6 +21,9 @@ include($$PWD/DemoStandardModel/DemoStandardModel.pri)
 INCLUDEPATH += $$PWD/DemoTableModel
 include($$PWD/DemoTableModel/DemoTableModel.pri)
 
+INCLUDEPATH += $$PWD/DemoStyledDelegate
+include($$PWD/DemoStyledDelegate/DemoStyledDelegate.pri)
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
