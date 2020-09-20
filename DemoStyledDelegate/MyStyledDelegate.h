@@ -1,9 +1,17 @@
 #ifndef MYSTYLEDDELEGATE_H
 #define MYSTYLEDDELEGATE_H
 
+//为了方便使用各控件，所以直接引入了整个widgets模块
+#include <QtWidgets>
 #include <QStyledItemDelegate>
 #include <QStyleOptionViewItem>
 
+/**
+ * @brief 自定义QStyledItemDelegate，演示渲染和编辑的接口自定义
+ * @note delegate 没有非编辑状态提供插入控件的接口，有两种方式
+ * 1.view 的 setIndexWidget 插入显示静态数据的 widget
+ * 2.delegate 的 paint 中使用 QStyle 的 drawControl 绘制
+ */
 class MyStyledDelegate : public QStyledItemDelegate
 {
     Q_OBJECT

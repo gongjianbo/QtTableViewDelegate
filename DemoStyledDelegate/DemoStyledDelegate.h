@@ -10,10 +10,12 @@ namespace Ui {
 class DemoStyledDelegate;
 }
 
+/**
+ * @brief 展示QTableView+QStyledItemDelegate的基本使用
+ */
 class DemoStyledDelegate : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit DemoStyledDelegate(QWidget *parent = nullptr);
     ~DemoStyledDelegate();

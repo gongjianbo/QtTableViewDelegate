@@ -123,6 +123,10 @@ void DemoStyledDelegate::initView()
     table->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     //scrollbar的显示时机
     //table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    //这种方式添加的控件拖动单元格大小时，拖动结束他才去适应大小
+    //根据文档描述这是用于展示静态内容的接口
+    //table->setIndexWidget(model->index(0,0),new QPushButton("btn"));
 }
 
 void DemoStyledDelegate::initOperate()

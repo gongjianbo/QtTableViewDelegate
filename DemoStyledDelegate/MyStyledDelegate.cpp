@@ -1,9 +1,5 @@
 #include "MyStyledDelegate.h"
 
-#include <QLineEdit>
-#include <QSpinBox>
-#include <QDoubleSpinBox>
-#include <QComboBox>
 #include <QStyleOptionViewItem>
 #include <QStyle>
 #include <QApplication>
