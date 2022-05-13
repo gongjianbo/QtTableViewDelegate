@@ -84,6 +84,7 @@ void DemoTableModel::initOperate()
     //设置model的数据
     connect(ui->btnSetData,&QPushButton::clicked,this,&DemoTableModel::setData);
     //导出model中的数据
+    ui->btnGetData->setEnabled(false);
     connect(ui->btnGetData,&QPushButton::clicked,this,&DemoTableModel::getData);
     //添加行
     connect(ui->btnAddRow,&QPushButton::clicked,this,&DemoTableModel::addRow);

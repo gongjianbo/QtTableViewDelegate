@@ -38,6 +38,11 @@ QPushButton:pressed,
 QPushButton:checked{
 background:rgb(50,100,200);
 }
+QPushButton:disabled{
+border:1px solid rgb(150,150,150);
+color:rgb(200,200,200);
+background:rgb(120,120,120);
+}
 /*tabwidget*/
 QTabWidget{
 }
@@ -143,7 +148,78 @@ background:rgb(50,100,200);
 }
 /*表头排序的小图标*/
 QHeaderView::down-arrow{}
-QHeaderView::up-arrow{}</string>
+QHeaderView::up-arrow{}
+/*滚动条*/
+QScrollBar:vertical{/*竖向的槽*/
+width:20px;
+background-color:transparent;
+padding-top:3px;
+padding-left:3px;
+padding-right:3px;
+padding-bottom:3px;
+margin:0;
+}
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical{
+background:#232323;
+}
+QScrollBar::handle:vertical
+{
+width:10px;
+background-color: rgb(75, 75, 75);
+min-height:20;
+}
+QScrollBar::handle:vertical:hover
+{
+width:10px;
+background-color: rgb(89, 89, 89);
+}
+QScrollBar::add-line:vertical
+{
+height:0px;width:0px;
+subcontrol-position:bottom;
+}
+QScrollBar::sub-line:vertical
+{
+height:0px;width:0px;
+subcontrol-position:top;
+}
+QScrollBar:left-arrow:vertical,QScrollBar:right-arrow:vertical{
+}
+QScrollBar:horizontal{/*横向的槽*/
+height:20px;
+background-color:transparent;
+padding-top:3px;
+padding-left:3px;
+padding-right:3px;
+padding-bottom:3px;
+margin:0;
+}
+QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal
+{background:#232323;
+}
+QScrollBar::handle:horizontal
+{
+height:10px;
+background-color: rgb(75, 75, 75);
+min-width:20px;
+}
+QScrollBar::handle:horizontal:hover
+{
+width:10px;
+background-color: rgb(89, 89, 89);
+}
+QScrollBar::add-line:horizontal
+{
+height:0px;width:0px;
+subcontrol-position:right;
+}
+QScrollBar::sub-line:horizontal
+{
+height:0px;width:0px;
+subcontrol-position:left;
+}
+QScrollBar:left-arrow:horizontal,QScrollBar:right-arrow:horizontal{
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
