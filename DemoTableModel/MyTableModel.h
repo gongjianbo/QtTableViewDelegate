@@ -1,6 +1,4 @@
-#ifndef MYTABLEMODEL_H
-#define MYTABLEMODEL_H
-
+#pragma once
 #include <QAbstractTableModel>
 
 /**
@@ -85,6 +83,3 @@ private:
     //横项列表头
     QList<QString> horHeaderData;
 };
-
-
-#endif // MYTABLEMODEL_H

@@ -1,6 +1,4 @@
-#ifndef DEMOSTANDARDMODEL_H
-#define DEMOSTANDARDMODEL_H
-
+#pragma once
 #include <QWidget>
 #include <QTimer>
 #include <QStandardItemModel>
@@ -39,5 +37,3 @@ private:
     //文档https://doc.qt.io/qt-5/qstandarditemmodel.html
     QStandardItemModel *model=nullptr;
 };
-
-#endif // DemoStandardModel_H

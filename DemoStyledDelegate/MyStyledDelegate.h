@@ -1,7 +1,6 @@
-#ifndef MYSTYLEDDELEGATE_H
-#define MYSTYLEDDELEGATE_H
-
+#pragma once
 //为了方便使用各控件，所以直接引入了整个widgets模块
+//实际项目不要这么写
 #include <QtWidgets>
 #include <QStyledItemDelegate>
 #include <QStyleOptionViewItem>
@@ -43,5 +42,3 @@ private:
     void initMyStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const;
     QString getDisplayText(const QModelIndex &index) const;
 };
-
-#endif // MYSTYLEDDELEGATE_H

@@ -1,6 +1,4 @@
-#ifndef DEMOSTYLEDDELEGATE_H
-#define DEMOSTYLEDDELEGATE_H
-
+#pragma once
 #include <QWidget>
 #include <QStandardItemModel>
 #include <QStandardItem>
@@ -33,5 +31,3 @@ private:
     //自定义delegate
     MyStyledDelegate *delegate=nullptr;
 };
-
-#endif // DEMOSTYLEDDELEGATE_H

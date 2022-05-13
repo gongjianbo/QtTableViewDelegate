@@ -1,4 +1,4 @@
-QT       += core gui widgets
+QT += core gui widgets
 
 CONFIG += c++11 utf8_source
 

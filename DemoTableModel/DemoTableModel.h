@@ -1,6 +1,4 @@
-#ifndef DEMOTABLEMODEL_H
-#define DEMOTABLEMODEL_H
-
+#pragma once
 #include <QWidget>
 #include "MyTableModel.h"
 
@@ -41,5 +39,3 @@ private:
     //保存和恢复选中项
     QModelIndex selectedIndex;
 };
-
-#endif // DEMOTABLEMODEL_H
